@@ -1,0 +1,15 @@
+# robots.txt for MiSalon
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Block admin and API paths (if exist in future)
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://misalon.netlify.app/sitemap-index.xml
+
+# Crawl delay (optional - prevents aggressive bots)
+Crawl-delay: 1

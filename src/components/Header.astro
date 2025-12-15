@@ -1,0 +1,214 @@
+---
+// Header component - Navigation with logo and menu
+---
+
+<header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 header">
+  <div class="container mx-auto px-4 py-4">
+    <div class="flex items-center justify-between">
+
+      <!-- Logo -->
+      <a
+        href="#hero"
+        class="text-3xl md:text-4xl font-bodoni font-bold text-neutral-gray hover:text-primary transition-colors duration-300"
+        aria-label="MiSalon - Ir al inicio"
+      >
+        MiSalon
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8" role="navigation" aria-label="Navegación principal">
+        <a href="#hero" class="nav-link">Inicio</a>
+        <a href="#value-proposition" class="nav-link">Nosotros</a>
+        <a href="#services" class="nav-link">Servicios</a>
+        <a href="#gallery" class="nav-link">Galería</a>
+        <a href="#team" class="nav-link">Equipo</a>
+        <a href="#contact" class="btn-primary-sm">Contacto</a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-button"
+        class="md:hidden flex flex-col gap-1.5 p-2 focus:outline-none focus:ring-2 focus:ring-primary rounded"
+        aria-label="Abrir menú de navegación"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav
+      id="mobile-menu"
+      class="mobile-menu hidden md:hidden mt-4 pb-4"
+      role="navigation"
+      aria-label="Navegación móvil"
+    >
+      <div class="flex flex-col gap-4">
+        <a href="#hero" class="mobile-nav-link">Inicio</a>
+        <a href="#value-proposition" class="mobile-nav-link">Nosotros</a>
+        <a href="#services" class="mobile-nav-link">Servicios</a>
+        <a href="#gallery" class="mobile-nav-link">Galería</a>
+        <a href="#team" class="mobile-nav-link">Equipo</a>
+        <a href="#contact" class="btn-primary w-full text-center">Contacto</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  /* Header background on scroll */
+  .header {
+    background: transparent;
+  }
+
+  .header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Header with mobile menu open - solid background for readability */
+  .header.mobile-menu-open {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Desktop nav links */
+  .nav-link {
+    @apply font-sans font-medium text-neutral-gray hover:text-primary transition-colors duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1;
+  }
+
+  /* Mobile nav links */
+  .mobile-nav-link {
+    @apply font-sans font-medium text-neutral-gray hover:text-primary transition-colors duration-300 text-center py-2;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary rounded;
+  }
+
+  /* Hamburger lines */
+  .hamburger-line {
+    @apply w-6 h-0.5 bg-neutral-gray transition-all duration-300;
+  }
+
+  #mobile-menu-button[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
+
+  #mobile-menu-button[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  #mobile-menu-button[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
+
+  /* Mobile menu animation */
+  .mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    background: transparent;
+  }
+
+  .mobile-menu.active {
+    display: block;
+    max-height: 400px;
+    background: rgba(255, 255, 255, 0.98);
+    margin: 0 -1rem;
+    padding: 1rem;
+    border-radius: 0 0 8px 8px;
+  }
+</style>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const header = document.getElementById('header');
+
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+
+      mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
+      mobileMenu.classList.toggle('active');
+
+      // Toggle header background when mobile menu is open
+      if (header) {
+        header.classList.toggle('mobile-menu-open');
+      }
+
+      // Update aria-label
+      mobileMenuButton.setAttribute(
+        'aria-label',
+        isExpanded ? 'Abrir menú de navegación' : 'Cerrar menú de navegación'
+      );
+    });
+
+    // Close mobile menu when clicking on a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('active');
+        if (header) {
+          header.classList.remove('mobile-menu-open');
+        }
+        mobileMenuButton.setAttribute('aria-label', 'Abrir menú de navegación');
+      });
+    });
+  }
+
+  // Header scroll effect
+  if (header) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  }
+
+  // Smooth scroll for all nav links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+
+      if (targetId === '#') return;
+
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        const headerHeight = header?.offsetHeight || 0;
+        const targetPosition = targetElement.offsetTop - headerHeight;
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Close mobile menu on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenuButton && mobileMenu) {
+      const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+
+      if (isExpanded) {
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('active');
+        if (header) {
+          header.classList.remove('mobile-menu-open');
+        }
+        mobileMenuButton.setAttribute('aria-label', 'Abrir menú de navegación');
+      }
+    }
+  });
+</script>

@@ -1,0 +1,86 @@
+---
+// ValueProposition component - Why choose our salon (3-4 benefits)
+---
+
+<section id="value-proposition" class="py-20 bg-surface-beige">
+  <div class="container mx-auto px-4">
+
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bodoni font-bold text-neutral-gray mb-4">
+        Por Qué Elegir MiSalon
+      </h2>
+      <p class="text-lg font-sans text-neutral-gray-medium max-w-2xl mx-auto">
+        Experiencia profesional, atención personalizada y productos de primera calidad para tu belleza
+      </p>
+    </div>
+
+    <!-- Benefits Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+
+      <!-- Benefit 1: Expert Stylists -->
+      <article class="benefit-card text-center">
+        <div class="mb-6">
+          <h3 class="text-2xl md:text-3xl font-bodoni font-bold text-primary mb-4">
+            Estilistas Profesionales Certificados
+          </h3>
+        </div>
+        <p class="text-base font-sans text-neutral-gray-medium leading-relaxed">
+          Nuestro equipo cuenta con más de 10 años de experiencia y certificaciones
+          internacionales. Transformamos tu visión en realidad con técnicas actualizadas
+          y atención personalizada que resalta tu belleza única.
+        </p>
+      </article>
+
+      <!-- Benefit 2: Personalized Consultations -->
+      <article class="benefit-card text-center">
+        <div class="mb-6">
+          <h3 class="text-2xl md:text-3xl font-bodoni font-bold text-primary mb-4">
+            Consultas Personalizadas
+          </h3>
+        </div>
+        <p class="text-base font-sans text-neutral-gray-medium leading-relaxed">
+          Cada visita comienza con un análisis completo de tu tipo de cabello, estilo
+          de vida y preferencias. Creamos soluciones únicas adaptadas a tu forma de
+          rostro y rutina diaria para resultados que te acompañan.
+        </p>
+      </article>
+
+      <!-- Benefit 3: Premium Products -->
+      <article class="benefit-card text-center">
+        <div class="mb-6">
+          <h3 class="text-2xl md:text-3xl font-bodoni font-bold text-primary mb-4">
+            Productos Premium Profesionales
+          </h3>
+        </div>
+        <p class="text-base font-sans text-neutral-gray-medium leading-relaxed">
+          Utilizamos solo productos de grado profesional con fórmulas concentradas
+          y suaves. Ingredientes de alta calidad que generan resultados superiores
+          mientras cuidan la salud de tu cabello y piel.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animate benefit cards on scroll
+  gsap.from('.benefit-card', {
+    scrollTrigger: {
+      trigger: '#value-proposition',
+      start: 'top 80%',
+      toggleActions: 'play none none none',
+    },
+    y: 60,
+    opacity: 0,
+    stagger: 0.2,
+    duration: 0.8,
+    ease: 'power2.out',
+  });
+</script>

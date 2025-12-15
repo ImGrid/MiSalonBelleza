@@ -1,0 +1,111 @@
+---
+// Team component - Full-width hero with minimal overlay
+// Based on expert research 2025: minimalist approach, large photo, minimal text
+// Sources: Ronkot, Vandelay Design, Web Ascender
+// Philosophy: "Less is more" - visual storytelling over text density
+---
+
+<section
+  id="team"
+  class="relative min-h-screen flex items-center justify-center overflow-hidden"
+>
+  <!-- Background Image - Full Width -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="/images/team/team-stylists.webp"
+      alt="Equipo de estilistas profesionales de MiSalon: tres especialistas certificadas en corte, coloración y peinado"
+      class="w-full h-full object-cover"
+      loading="lazy"
+    />
+    <!-- Gradient Overlay for text readability -->
+    <!-- Source: https://www.shutterstock.com/blog/how-to-add-text-on-photos -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
+  </div>
+
+  <!-- Content - Minimal Text Centered -->
+  <div class="relative z-10 text-center px-4 team-content">
+
+    <!-- Main Title -->
+    <h2
+      class="text-5xl md:text-6xl lg:text-7xl font-bodoni font-bold text-white mb-6 drop-shadow-lg team-title"
+    >
+      Nuestro Equipo
+    </h2>
+
+    <!-- Single Line Description - Ultra Minimal -->
+    <p
+      class="text-xl md:text-2xl lg:text-3xl font-sans text-white mb-10 drop-shadow-lg max-w-4xl mx-auto team-description"
+    >
+      Estilistas certificados con más de 10 años transformando tu belleza
+    </p>
+
+    <!-- CTA Button -->
+    <a href="#contact" class="btn-primary team-cta">
+      Agenda tu Cita
+    </a>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Set initial state for team content elements (FOUC prevention)
+  gsap.set('.team-title', {
+    opacity: 0,
+    y: 60,
+  });
+
+  gsap.set('.team-description', {
+    opacity: 0,
+    y: 60,
+  });
+
+  gsap.set('.team-cta', {
+    opacity: 0,
+    y: 60,
+  });
+
+  // Animate team title (Opción 1: Rápido y Dinámico)
+  gsap.to('.team-title', {
+    scrollTrigger: {
+      trigger: '#team',
+      start: 'top 75%',
+      toggleActions: 'play none none none',
+    },
+    y: 0,
+    opacity: 1,
+    duration: 0.6,
+    ease: 'power3.out',
+  });
+
+  // Animate team description (with reduced delay)
+  gsap.to('.team-description', {
+    scrollTrigger: {
+      trigger: '#team',
+      start: 'top 75%',
+      toggleActions: 'play none none none',
+    },
+    y: 0,
+    opacity: 1,
+    duration: 0.5,
+    delay: 0.15,
+    ease: 'power2.out',
+  });
+
+  // Animate CTA button (with reduced delay and subtle bounce)
+  gsap.to('.team-cta', {
+    scrollTrigger: {
+      trigger: '#team',
+      start: 'top 75%',
+      toggleActions: 'play none none none',
+    },
+    y: 0,
+    opacity: 1,
+    duration: 0.5,
+    delay: 0.3,
+    ease: 'back.out(1.2)',
+  });
+</script>

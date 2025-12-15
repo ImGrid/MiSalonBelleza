@@ -1,0 +1,159 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+// SEO Configuration
+const SITE_URL = "https://misalon.netlify.app";
+const SITE_NAME = "MiSalon";
+const SITE_LOCALE = "es_BO";
+const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+const TWITTER_HANDLE = "@misalon";
+
+// Canonical URL (current page)
+const canonicalURL = new URL(Astro.url.pathname, SITE_URL);
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta Tags -->
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+  <meta name="keywords" content="salón de belleza, Santa Cruz, Bolivia, corte de cabello, coloración, manicure, pedicure, tratamiento capilar, belleza, estilo" />
+  <meta name="author" content="MiSalon" />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={OG_IMAGE} />
+  <meta property="og:image:secure_url" content={OG_IMAGE} />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="MiSalon - Salón de Belleza en Santa Cruz" />
+  <meta property="og:site_name" content={SITE_NAME} />
+  <meta property="og:locale" content={SITE_LOCALE} />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content={canonicalURL} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={OG_IMAGE} />
+  <meta name="twitter:image:alt" content="MiSalon - Salón de Belleza en Santa Cruz" />
+  <meta name="twitter:site" content={TWITTER_HANDLE} />
+  <meta name="twitter:creator" content={TWITTER_HANDLE} />
+
+  <!-- Favicons - Multi-device support -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#D4AF37" />
+
+  <!-- Google Fonts Preconnect (Performance optimization) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700;900&family=Great+Vibes&family=Montserrat:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Structured Data - LocalBusiness Schema (JSON-LD) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BeautySalon",
+      "name": "MiSalon",
+      "description": "El mejor salón de belleza en Santa Cruz, Bolivia. Ofrecemos cortes, coloración, tratamientos capilares, manicure, pedicure y más.",
+      "image": "https://misalon.netlify.app/og-image.jpg",
+      "@id": "https://misalon.netlify.app",
+      "url": "https://misalon.netlify.app",
+      "telephone": "+591-3-123-4567",
+      "priceRange": "60 Bs - 450 Bs",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle Junín 123, Equipetrol",
+        "addressLocality": "Santa Cruz de la Sierra",
+        "addressRegion": "SC",
+        "postalCode": "0000",
+        "addressCountry": "BO"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -17.78629398505917,
+        "longitude": -63.18243968251954
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "15:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/misalon.scz",
+        "https://www.facebook.com/misalon.scz"
+      ]
+    }
+  </script>
+</head>
+<body class="font-sans antialiased bg-white text-neutral-gray">
+  <slot />
+</body>
+</html>
+
+<style is:global>
+  /* Global button styles - Opción B: border-radius 2px */
+
+  /* Primary CTA Button (main call-to-action) */
+  .btn-primary {
+    @apply inline-block bg-primary hover:bg-primary-dark text-white font-sans font-semibold px-8 py-4 transition-all duration-300 transform hover:scale-105 shadow-lg;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    border-radius: 2px;
+  }
+
+  /* Secondary Button (navigation, less prominent) */
+  .btn-secondary {
+    @apply inline-block bg-secondary hover:bg-secondary-dark text-neutral-gray font-sans font-semibold px-6 py-3 transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2;
+    border-radius: 2px;
+  }
+
+  /* Small CTA Button (header, compact areas) */
+  .btn-primary-sm {
+    @apply inline-block bg-primary hover:bg-primary-dark text-white font-sans font-semibold px-6 py-2 transition-all duration-300 transform hover:scale-105;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    border-radius: 2px;
+  }
+
+  /* Outline Button (alternative style) */
+  .btn-outline {
+    @apply inline-block border-2 border-primary hover:bg-primary hover:text-white text-primary font-sans font-semibold px-6 py-3 transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    border-radius: 2px;
+  }
+</style>

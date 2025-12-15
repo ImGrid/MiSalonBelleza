@@ -1,0 +1,137 @@
+---
+// Hero component - Full-screen hero section with background image
+---
+
+<section
+  id="hero"
+  class="relative min-h-screen flex items-center justify-center overflow-hidden"
+>
+  <!-- Background Image -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="/images/hero/hero-bg.webp"
+      alt="Salón de belleza elegante MiSalon"
+      class="w-full h-full object-cover"
+      loading="eager"
+    />
+    <!-- Gradient Overlay for better text readability - Editorial style -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/60"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center px-4 hero-content">
+    <!-- Main Title -->
+    <h1
+      class="text-6xl md:text-7xl lg:text-8xl font-bodoni font-bold text-white mb-4 drop-shadow-lg hero-title"
+    >
+      MiSalon
+    </h1>
+
+    <!-- Tagline -->
+    <p
+      class="text-3xl md:text-4xl lg:text-5xl font-vibes text-white mb-8 drop-shadow-lg hero-tagline"
+    >
+      Belleza & Estilo
+    </p>
+
+    <!-- CTA Button -->
+    <a href="#contact" class="btn-primary hero-cta">
+      Agendar Cita
+    </a>
+  </div>
+
+  <!-- Scroll Indicator - Optional elegant touch -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce opacity-70 hero-scroll">
+    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+    </svg>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Set initial state for hero elements (FOUC prevention)
+  // Source: https://marmelab.com/blog/2024/05/30/gsap-in-practice-avoid-the-pitfalls.html
+  gsap.set('.hero-title', {
+    opacity: 0,
+    y: 80,
+  });
+
+  gsap.set('.hero-tagline', {
+    opacity: 0,
+    y: 60,
+  });
+
+  gsap.set('.hero-cta', {
+    opacity: 0,
+    y: 40,
+  });
+
+  gsap.set('.hero-scroll', {
+    opacity: 0,
+  });
+
+  // Timeline for elegant sequential entrance
+  // Inspired by luxury fashion websites (Vogue, Elle)
+  // Optimized for modern web speed (Opción 1: Rápido y Dinámico)
+  const heroTimeline = gsap.timeline({ delay: 0.1 });
+
+  // Animate title with smooth fade-in from below
+  heroTimeline.to('.hero-title', {
+    duration: 0.8,
+    y: 0,
+    opacity: 1,
+    ease: 'power4.out',
+  });
+
+  // Animate tagline overlapping with title (before title finishes)
+  heroTimeline.to('.hero-tagline', {
+    duration: 0.6,
+    y: 0,
+    opacity: 1,
+    ease: 'power3.out',
+  }, '-=0.5'); // Overlap 0.5s for smooth transition
+
+  // Animate CTA with subtle bounce (editorial touch)
+  heroTimeline.to('.hero-cta', {
+    duration: 0.6,
+    y: 0,
+    opacity: 1,
+    ease: 'back.out(1.2)', // Very subtle bounce
+  }, '-=0.4'); // Overlap 0.4s
+
+  // Animate scroll indicator last
+  heroTimeline.to('.hero-scroll', {
+    duration: 0.5,
+    opacity: 0.7,
+    ease: 'power2.out',
+  }, '-=0.3');
+
+  // Subtle parallax effect on scroll (optional - luxury touch)
+  // Content fades and moves up as user scrolls down
+  gsap.to('.hero-content', {
+    scrollTrigger: {
+      trigger: '#hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 1.5, // Smooth scrubbing
+    },
+    y: 150,
+    opacity: 0,
+  });
+
+  // Fade out scroll indicator on scroll
+  gsap.to('.hero-scroll', {
+    scrollTrigger: {
+      trigger: '#hero',
+      start: 'top top',
+      end: '20% top',
+      scrub: 1,
+    },
+    opacity: 0,
+  });
+</script>

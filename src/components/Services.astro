@@ -1,0 +1,419 @@
+---
+// Services component - Bento Grid layout with professional image integration
+// Based on expert research: hybrid approach (lifestyle + close-up photography)
+// Image overlay technique from editorial magazine design patterns
+---
+
+<section id="services" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bodoni font-bold text-neutral-gray mb-4">
+        Nuestros Servicios
+      </h2>
+      <p class="text-lg font-sans text-neutral-gray-medium max-w-2xl mx-auto">
+        Experiencias de belleza personalizadas con técnicas profesionales y productos premium
+      </p>
+    </div>
+
+    <!-- Bento Grid - Services with Images -->
+    <div class="services-grid">
+
+      <!-- Service 1: Corte de Cabello (Hero Card - Largest) -->
+      <!-- Image: Lifestyle shot showing stylist-client connection (22% more engagement) -->
+      <article class="service-card service-card-large service-card-with-image">
+        <!-- Background Image Layer (z-index: 1) -->
+        <img
+          src="/images/gallery/gallery-stylist-blowdry.webp"
+          alt="Estilista profesional secando cabello de cliente en MiSalon"
+          class="service-card-image"
+          loading="lazy"
+        />
+        <!-- Gradient Overlay for text readability (z-index: 2) -->
+        <div class="service-card-overlay service-card-overlay-dark"></div>
+        <!-- Content Layer (z-index: 3) -->
+        <div class="service-card-content">
+          <h3 class="text-3xl md:text-4xl font-bodoni font-bold text-white mb-4">
+            Corte de Cabello
+          </h3>
+          <p class="text-base font-sans text-white leading-relaxed mb-6 opacity-95">
+            Cada corte comienza con una consulta completa y análisis capilar, seguido de un
+            lavado premium y relajante masaje del cuero cabelludo. Finalizamos con un secado
+            técnico profesional y recomendaciones personalizadas para el cuidado en casa.
+          </p>
+          <p class="text-2xl font-bodoni text-white font-semibold">
+            Desde 80 Bs
+          </p>
+        </div>
+      </article>
+
+      <!-- Service 2: Coloración Profesional -->
+      <!-- Image: Artistic B&W stylist working (professional, editorial style) -->
+      <article class="service-card service-card-with-image">
+        <!-- Background Image Layer -->
+        <img
+          src="/images/gallery/gallery-artistic-bw.webp"
+          alt="Estilista profesional trabajando con iluminación artística en MiSalon"
+          class="service-card-image"
+          loading="lazy"
+        />
+        <!-- Gradient Overlay -->
+        <div class="service-card-overlay service-card-overlay-dark"></div>
+        <!-- Content Layer -->
+        <div class="service-card-content">
+          <h3 class="text-2xl md:text-3xl font-bodoni font-bold text-white mb-4">
+            Coloración Profesional
+          </h3>
+          <p class="text-base font-sans text-white leading-relaxed mb-6 opacity-95">
+            Transforma tu look con aplicación experta de color usando fórmulas profesionales
+            de alta gama. Nuestros estilistas combinan arte y precisión técnica para lograr
+            tu tono perfecto mientras mantienen la salud de tu cabello.
+          </p>
+          <p class="text-xl font-bodoni text-white font-semibold">
+            Desde 150 Bs
+          </p>
+        </div>
+      </article>
+
+      <!-- Service 3: Tratamiento Capilar -->
+      <!-- Image: Close-up of professional technique (process photography) -->
+      <article class="service-card service-card-with-image">
+        <!-- Background Image Layer -->
+        <img
+          src="/images/gallery/gallery-tools-closeup.webp"
+          alt="Técnica profesional de secado y brushing en MiSalon"
+          class="service-card-image"
+          loading="lazy"
+        />
+        <!-- Gradient Overlay -->
+        <div class="service-card-overlay service-card-overlay-medium"></div>
+        <!-- Content Layer -->
+        <div class="service-card-content">
+          <h3 class="text-2xl md:text-3xl font-bodoni font-bold text-white mb-4">
+            Tratamiento Capilar Nutritivo
+          </h3>
+          <p class="text-base font-sans text-white leading-relaxed mb-6 opacity-95">
+            Tratamiento restaurador para cabello seco, opaco o encrespado que devuelve la
+            radiancia y textura sedosa. Incluye masaje relajante del cuero cabelludo y
+            secado profesional.
+          </p>
+          <p class="text-xl font-bodoni text-white font-semibold">
+            Desde 200 Bs
+          </p>
+        </div>
+      </article>
+
+      <!-- Service 4: Manicure & Pedicure -->
+      <!-- Image: Pink salon chairs (color match with accent pink) -->
+      <article class="service-card service-card-wide service-card-with-image">
+        <!-- Background Image Layer -->
+        <img
+          src="/images/gallery/gallery-pink-chairs.webp"
+          alt="Estaciones de trabajo elegantes con sillas rosas en MiSalon"
+          class="service-card-image"
+          loading="lazy"
+        />
+        <!-- Strong Scrim Overlay - Light background requires 88% opacity for readability -->
+        <div class="service-card-overlay service-card-overlay-light-scrim"></div>
+        <!-- Content Layer -->
+        <div class="service-card-content">
+          <h3 class="text-2xl md:text-3xl font-bodoni font-bold text-white mb-4">
+            Manicure & Pedicure Signature
+          </h3>
+          <p class="text-base font-sans text-white leading-relaxed mb-6 opacity-95">
+            Experiencia completa de cuidado de manos y pies con productos premium. Incluye
+            exfoliación, masaje relajante, y aplicación perfecta de esmalte de larga
+            duración en un ambiente de lujo.
+          </p>
+          <p class="text-xl font-bodoni text-white font-semibold">
+            Desde 60 Bs
+          </p>
+        </div>
+      </article>
+
+      <!-- Service 5: Maquillaje Profesional -->
+      <!-- Image: Makeup brushes (product photography showing premium tools) -->
+      <article class="service-card service-card-with-image">
+        <!-- Background Image Layer -->
+        <img
+          src="/images/gallery/gallery-makeup-brushes.webp"
+          alt="Brochas de maquillaje profesional premium en MiSalon"
+          class="service-card-image"
+          loading="lazy"
+        />
+        <!-- Gradient Overlay -->
+        <div class="service-card-overlay service-card-overlay-medium"></div>
+        <!-- Content Layer -->
+        <div class="service-card-content">
+          <h3 class="text-2xl md:text-3xl font-bodoni font-bold text-white mb-4">
+            Maquillaje Profesional
+          </h3>
+          <p class="text-base font-sans text-white leading-relaxed mb-6 opacity-95">
+            Aplicación de maquillaje experto para cualquier ocasión, desde looks naturales
+            hasta glamorosos. Usamos productos de alta gama que resaltan tu belleza natural
+            y duran todo el día.
+          </p>
+          <p class="text-xl font-bodoni text-white font-semibold">
+            Desde 100 Bs
+          </p>
+        </div>
+      </article>
+
+      <!-- Service 6: Paquete Novia -->
+      <!-- Image: Luxury salon interior (perfect Elegant Neutrals palette match) -->
+      <article class="service-card service-card-featured service-card-with-image">
+        <!-- Background Image Layer -->
+        <img
+          src="/images/gallery/gallery-vertical-mirrors.webp"
+          alt="Interior de lujo de MiSalon con espejos dorados y mármol"
+          class="service-card-image"
+          loading="lazy"
+        />
+        <!-- Gradient Overlay - lighter for luxury feel -->
+        <div class="service-card-overlay service-card-overlay-luxury"></div>
+        <!-- Content Layer -->
+        <div class="service-card-content">
+          <h3 class="text-2xl md:text-3xl font-bodoni font-bold text-white mb-4">
+            Paquete Novia Completo
+          </h3>
+          <p class="text-base font-sans text-white leading-relaxed mb-6 opacity-95">
+            Experiencia integral para el día más importante. Incluye prueba de peinado y
+            maquillaje, tratamiento capilar pre-evento, y aplicación completa el día de la
+            boda. Tu belleza en manos expertas.
+          </p>
+          <p class="text-xl font-bodoni text-white font-semibold">
+            450 Bs
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- CTA Button -->
+    <div class="text-center mt-16">
+      <a href="#contact" class="btn-primary">
+        Reservar Ahora
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Bento Grid Layout */
+  .services-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  /* Tablet and up: 2 columns */
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  /* Desktop: Asymmetric Bento Grid layout */
+  @media (min-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, auto);
+      gap: 2rem;
+    }
+
+    /* Service 1 (Corte) - Large, 2 rows, 2 columns */
+    .service-card-large {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+    }
+
+    /* Service 2 (Coloración) - Top right */
+    .service-card:nth-child(2) {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+    }
+
+    /* Service 3 (Tratamiento) - Middle right */
+    .service-card:nth-child(3) {
+      grid-column: 4 / 5;
+      grid-row: 1 / 2;
+    }
+
+    /* Service 4 (Manicure) - Wide, spans 2 columns */
+    .service-card-wide {
+      grid-column: 3 / 5;
+      grid-row: 2 / 3;
+    }
+
+    /* Service 5 (Maquillaje) - Bottom left */
+    .service-card:nth-child(5) {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+    }
+
+    /* Service 6 (Paquete Novia) - Featured, bottom right, wide */
+    .service-card-featured {
+      grid-column: 2 / 5;
+      grid-row: 3 / 4;
+    }
+  }
+
+  /* Base Service Card Styles */
+  .service-card {
+    background: #F5F5DC;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  /* Cards with images - layered approach from editorial design */
+  .service-card-with-image {
+    background: transparent;
+  }
+
+  /* Image Layer (z-index: 1) */
+  .service-card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: transform 0.6s ease;
+  }
+
+
+  /* Gradient Overlay Layer (z-index: 2) - Based on magazine editorial overlay techniques */
+  .service-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Dark overlay for hero card - ensures text readability */
+  .service-card-overlay-dark {
+    background: linear-gradient(
+      135deg,
+      rgba(44, 44, 44, 0.75) 0%,
+      rgba(44, 44, 44, 0.85) 100%
+    );
+  }
+
+  /* Medium overlay for standard cards */
+  .service-card-overlay-medium {
+    background: linear-gradient(
+      to bottom,
+      rgba(44, 44, 44, 0.4) 0%,
+      rgba(44, 44, 44, 0.8) 100%
+    );
+  }
+
+  /* Strong scrim overlay for light background images - Editorial Magazine Technique */
+  /* Source: https://www.smashingmagazine.com/2023/08/designing-accessible-text-over-images-part1/ */
+  /* Ensures WCAG 4.5:1 contrast ratio on white/light images */
+  .service-card-overlay-light-scrim {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.6) 0%,      /* 60% opacity top - image still visible */
+      rgba(0, 0, 0, 0.88) 100%    /* 88% opacity bottom - text area very dark */
+    );
+  }
+
+  /* Luxury overlay for featured card with strong contrast */
+  /* Premium interior images need darker overlay for readability */
+  .service-card-overlay-luxury {
+    background: linear-gradient(
+      135deg,
+      rgba(44, 44, 44, 0.75) 0%,   /* Darker than before: 75% vs 50% */
+      rgba(0, 0, 0, 0.9) 100%      /* Very dark bottom: 90% for text readability */
+    );
+  }
+
+  /* Content Layer (z-index: 3) */
+  .service-card-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+  }
+
+  /* Text shadow for enhanced readability - complementary technique */
+  /* Source: https://www.sitelint.com/blog/3-simple-tips-to-make-text-over-image-more-readable */
+  /* Combines with overlay to maximize contrast on light backgrounds */
+  .service-card-content h3,
+  .service-card-content p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Hover Effects - Based on UX best practices (subtle, professional) */
+  .service-card:hover {
+    border-color: #D4AF37;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(212, 175, 55, 0.2);
+  }
+
+  /* Image zoom on hover - engaging microinteraction */
+  .service-card-with-image:hover .service-card-image {
+    transform: scale(1.1);
+  }
+
+  /* Accessibility: Focus states */
+  .service-card:focus-within {
+    border-color: #D4AF37;
+    outline: 2px solid #D4AF37;
+    outline-offset: 2px;
+  }
+
+  /* Mobile optimizations - ensure content is readable */
+  @media (max-width: 767px) {
+    .service-card {
+      min-height: 350px;
+    }
+
+    .service-card-large {
+      min-height: 400px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Set initial state for cards (GSAP best practice - avoid FOUC)
+  // Source: https://marmelab.com/blog/2024/05/30/gsap-in-practice-avoid-the-pitfalls.html
+  gsap.set('.service-card', {
+    opacity: 0,
+    y: 80,
+  });
+
+  // Animate service cards on scroll with stagger
+  // Using gsap.to() instead of gsap.from() to avoid cached values issue
+  // Source: https://gsap.com/resources/st-mistakes/
+  gsap.to('.service-card', {
+    scrollTrigger: {
+      trigger: '#services',
+      start: 'top 75%',
+      toggleActions: 'play none none none',
+    },
+    y: 0,
+    opacity: 1,
+    stagger: 0.15,
+    duration: 0.9,
+    ease: 'power2.out',
+  });
+</script>

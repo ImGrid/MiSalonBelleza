@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ValueProposition from '../components/ValueProposition.astro';
+import Services from '../components/Services.astro';
+import Gallery from '../components/Gallery.astro';
+import Team from '../components/Team.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="MiSalon - Belleza & Estilo | Salón de Belleza en Santa Cruz"
+  description="El mejor salón de belleza en Santa Cruz, Bolivia. Ofrecemos cortes, coloración, tratamientos capilares, manicure, pedicure y más. ¡Agenda tu cita!"
+>
+  <!-- Header Component - Fase 3 -->
+  <Header />
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Hero Section - Fase 3 -->
+    <Hero />
+
+    <!-- Value Proposition Section - Fase 4 -->
+    <ValueProposition />
+
+    <!-- Services Section - Fase 4 -->
+    <Services />
+
+    <!-- Gallery Section - Fase 4 -->
+    <Gallery />
+
+    <!-- Team Section - Fase 5 -->
+    <Team />
+
+    <!-- Contact Section - Fase 6 -->
+    <Contact />
+
+  </main>
+
+  <!-- Footer Component - Fase 7 -->
+  <Footer />
+
+</Layout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

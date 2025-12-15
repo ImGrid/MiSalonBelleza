@@ -1,0 +1,343 @@
+---
+// Gallery component - Masonry Grid with GLightbox
+// Based on expert research: Pinterest-style masonry for creative portfolios
+// Sources: CSS-Tricks, URThemes, GLightbox docs
+
+interface GalleryImage {
+  src: string;
+  alt: string;
+  category: 'cut' | 'color' | 'style';
+  title: string;
+}
+
+const galleryImages: GalleryImage[] = [
+  // CORTES (3 imágenes)
+  {
+    src: '/images/portfolio/gallery-cut-bob-black.webp',
+    alt: 'Corte bob negro elegante con acabado profesional en MiSalon',
+    category: 'cut',
+    title: 'Bob Clásico Negro'
+  },
+  {
+    src: '/images/portfolio/gallery-cut-bob-brown.webp',
+    alt: 'Corte bob castaño moderno con textura suave en MiSalon',
+    category: 'cut',
+    title: 'Bob Moderno Castaño'
+  },
+  {
+    src: '/images/portfolio/gallery-cut-pixie-modern.webp',
+    alt: 'Corte pixie rubio platinado vanguardista en MiSalon',
+    category: 'cut',
+    title: 'Pixie Vanguardista'
+  },
+
+  // COLORACIÓN (3 imágenes)
+  {
+    src: '/images/portfolio/gallery-color-balayage-blonde.webp',
+    alt: 'Balayage rubio ceniza con degradado profesional en MiSalon',
+    category: 'color',
+    title: 'Balayage Rubio Ceniza'
+  },
+  {
+    src: '/images/portfolio/gallery-color-highlights-caramel.webp',
+    alt: 'Mechas caramelo con reflejos dorados en cabello largo en MiSalon',
+    category: 'color',
+    title: 'Highlights Caramelo'
+  },
+  {
+    src: '/images/portfolio/gallery-color-purple-lavender.webp',
+    alt: 'Coloración lila lavanda vibrante con técnica profesional en MiSalon',
+    category: 'color',
+    title: 'Lila Lavanda'
+  },
+
+  // PEINADOS (4 imágenes)
+  {
+    src: '/images/portfolio/gallery-style-bridal-crown.webp',
+    alt: 'Peinado de novia con corona de flores y velo en MiSalon',
+    category: 'style',
+    title: 'Novia con Corona'
+  },
+  {
+    src: '/images/portfolio/gallery-style-bridal-updo.webp',
+    alt: 'Recogido elegante para novia con accesorios perlados en MiSalon',
+    category: 'style',
+    title: 'Recogido de Novia'
+  },
+  {
+    src: '/images/portfolio/gallery-style-updo-copper.webp',
+    alt: 'Updo elaborado con rizos en tono cobrizo para eventos en MiSalon',
+    category: 'style',
+    title: 'Updo Elegante'
+  },
+  {
+    src: '/images/portfolio/gallery-style-waves-elegant.webp',
+    alt: 'Ondas suaves elegantes para eventos especiales en MiSalon',
+    category: 'style',
+    title: 'Ondas Elegantes'
+  }
+];
+---
+
+<section id="gallery" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bodoni font-bold text-neutral-gray mb-4">
+        Nuestro Portafolio
+      </h2>
+      <p class="text-lg font-sans text-neutral-gray-medium max-w-2xl mx-auto">
+        Descubre nuestros trabajos más destacados: cortes modernos, coloraciones vibrantes y peinados para eventos especiales
+      </p>
+    </div>
+
+    <!-- Masonry Grid Gallery -->
+    <!-- Based on expert recommendation: 3-4 columns masonry for creative portfolios -->
+    <!-- Source: https://www.urthemes.com/post/how-to-choose-the-best-grid-layout-for-your-photography-portfolio-in-2024 -->
+    <div class="masonry-grid">
+      {galleryImages.map((image, index) => (
+        <article class="gallery-item">
+          <a
+            href={image.src}
+            class="glightbox"
+            data-gallery="portfolio"
+            data-glightbox={`title: ${image.title}; description: ${image.alt}`}
+            aria-label={`Ver imagen ampliada: ${image.title}`}
+          >
+            <div class="gallery-image-wrapper">
+              <img
+                src={image.src}
+                alt={image.alt}
+                loading="lazy"
+                class="gallery-image"
+              />
+              <!-- Hover Overlay -->
+              <div class="gallery-overlay">
+                <div class="gallery-overlay-content">
+                  <p class="gallery-title">{image.title}</p>
+                  <span class="gallery-category">{
+                    image.category === 'cut' ? 'Cortes' :
+                    image.category === 'color' ? 'Coloración' :
+                    'Peinados'
+                  }</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <!-- CTA Button -->
+    <div class="text-center mt-16">
+      <a href="#contact" class="btn-primary">
+        Agenda tu Cita
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Masonry Grid Layout - Pinterest Style */
+  /* Source: https://css-tricks.com/css-masonry-css-grid/ */
+
+  .masonry-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-auto-rows: 20px;
+  }
+
+  /* Tablet: 3 columns */
+  @media (min-width: 768px) {
+    .masonry-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  /* Desktop: 4 columns - Expert recommendation for masonry */
+  @media (min-width: 1024px) {
+    .masonry-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  /* Gallery Item */
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  /* Masonry item sizing - auto height based on content */
+  .gallery-item:nth-child(1) { grid-row: span 18; }  /* Vertical */
+  .gallery-item:nth-child(2) { grid-row: span 12; }  /* Horizontal */
+  .gallery-item:nth-child(3) { grid-row: span 12; }  /* Horizontal */
+  .gallery-item:nth-child(4) { grid-row: span 12; }  /* Horizontal */
+  .gallery-item:nth-child(5) { grid-row: span 12; }  /* Horizontal */
+  .gallery-item:nth-child(6) { grid-row: span 18; }  /* Vertical */
+  .gallery-item:nth-child(7) { grid-row: span 12; }  /* Horizontal */
+  .gallery-item:nth-child(8) { grid-row: span 12; }  /* Horizontal */
+  .gallery-item:nth-child(9) { grid-row: span 12; }  /* Horizontal */
+  .gallery-item:nth-child(10) { grid-row: span 18; } /* Vertical */
+
+  .gallery-item:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Image Wrapper */
+  .gallery-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* Gallery Image */
+  .gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .gallery-item:hover .gallery-image {
+    transform: scale(1.08);
+  }
+
+  /* Hover Overlay - Editorial Magazine Style */
+  .gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+  }
+
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+
+  /* Overlay Content */
+  .gallery-overlay-content {
+    color: white;
+    text-align: left;
+    width: 100%;
+  }
+
+  .gallery-title {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: white;
+  }
+
+  .gallery-category {
+    font-size: 0.875rem;
+    color: #D4AF37;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  /* Mobile: Stack vertical on small screens */
+  @media (max-width: 767px) {
+    .masonry-grid {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+    }
+
+    .gallery-item:nth-child(n) {
+      grid-row: auto;
+    }
+
+    .gallery-item {
+      min-height: 300px;
+    }
+  }
+</style>
+
+<!-- GLightbox Library - Zero dependencies lightbox -->
+<!-- Source: https://www.cssscript.com/top-10-javascript-css-gallery-lightbox-libraries/ -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Set initial state for gallery items (FOUC prevention)
+  gsap.set('.gallery-item', {
+    opacity: 0,
+    y: 60,
+  });
+
+  // Animate gallery items on scroll - stagger effect
+  gsap.to('.gallery-item', {
+    scrollTrigger: {
+      trigger: '#gallery',
+      start: 'top 75%',
+      toggleActions: 'play none none none',
+    },
+    y: 0,
+    opacity: 1,
+    stagger: 0.1,
+    duration: 0.8,
+    ease: 'power2.out',
+  });
+
+  // Load GLightbox library and initialize after DOM is ready
+  // This ensures GLightbox is loaded before initialization
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js';
+  script.onload = () => {
+    // Initialize GLightbox after library is loaded
+    // Modern lightbox with zoom, fullscreen, keyboard navigation
+    const lightbox = GLightbox({
+      touchNavigation: true,
+      loop: true,
+      autoplayVideos: true,
+      closeOnOutsideClick: true,
+      keyboardNavigation: true,
+    });
+
+    // Accessibility fix: Prevent aria-hidden focus trap
+    // Source: https://web.dev/articles/inert
+    // Source: https://www.washington.edu/accessibility/2025/11/13/aria-hidden-elements/
+    // When GLightbox opens, it adds aria-hidden="true" to background content
+    // Using 'inert' prevents focus AND interaction with hidden content (WCAG 2.1 AA)
+    const mainContent = document.getElementById('main-content');
+
+    lightbox.on('open', () => {
+      if (mainContent) {
+        mainContent.inert = true;
+      }
+    });
+
+    lightbox.on('close', () => {
+      if (mainContent) {
+        mainContent.inert = false;
+      }
+    });
+  };
+  document.head.appendChild(script);
+</script>
